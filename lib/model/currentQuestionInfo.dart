@@ -12,26 +12,21 @@ List? setCurrentQuestion(int index) {
       Questioninfo.currentQuestionCount = TESTPAPERONE.length;
       Questioninfo.currentQuestionCode = 1;
       return TESTPAPERONE;
-      break;
     case 2:
       Questioninfo.currentQuestionCount = TESTPAPERTWO.length;
       Questioninfo.currentQuestionCode = 2;
       return TESTPAPERTWO;
-      break;
     case 3:
       Questioninfo.currentQuestionCount = TESTPAPERTHREE.length;
       Questioninfo.currentQuestionCode = 3;
       return TESTPAPERTHREE;
-      break;
     case 4:
       Questioninfo.currentQuestionCount = TESTPAPERFOUR.length;
       Questioninfo.currentQuestionCode = 4;
       return TESTPAPERFOUR;
-      break;
     default:
       Questioninfo.currentQuestionCount = TESTPAPERONE.length;
       Questioninfo.currentQuestionCode = 1;
       return TESTPAPERONE;
-      break;
   }
 }

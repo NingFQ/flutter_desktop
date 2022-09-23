@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'model/theme/theme.dart';
 import 'pages/index.dart';
 import 'route/index.dart';
@@ -19,6 +20,7 @@ class MyApp extends StatelessWidget {
       onGenerateRoute: AppRoutes().onGenerateRoute,
       navigatorKey: AppRoutes.navigatorKey,
       home: const HomePage(),
+      builder: FlutterSmartDialog.init(),
     );
   }
 }

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../pages/all_question_page.dart';
-import '../pages/calculation_question/calculation_question_page1.dart';
+import '../pages/calculation_question/calculation1/calculation_question_page1.dart';
 import '../pages/index.dart';
 import '../pages/single_question_page.dart';
 import 'currentQuestionInfo.dart';

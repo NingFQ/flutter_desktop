@@ -74,8 +74,8 @@ class _AllQuestionPageState extends State<AllQuestionPage> {
       body: Align(
         alignment: Alignment.center,
         child: Container(
-          width: MediaQuery.of(context).size.width * 0.9,
-          height: MediaQuery.of(context).size.height * 0.9,
+          width: MediaQuery.of(context).size.width,
+          height: MediaQuery.of(context).size.height,
           padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 30),
           decoration: BoxDecoration(
             color: Colors.white,
