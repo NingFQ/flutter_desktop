@@ -57,13 +57,24 @@ class _CalculationQuestionPage1State extends State<CalculationQuestionPage1> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                '${questionData.questionId}、${questionData.questionName}(* 本题目为特殊题目，请先选择按钮以开始)',
+                '${questionData.questionId}、${questionData.questionName}',
                 style: const TextStyle(
                   fontSize: 18,
                 ),
               ),
+              Container(
+                padding: const EdgeInsets.only(left: 40),
+                alignment: Alignment.centerLeft,
+                height: 80,
+                child: const Text(
+                  '*本题目为特殊题目，请先选择按钮以开始',
+                  style: TextStyle(
+                    color: Colors.red,
+                  ),
+                ),
+              ),
               Padding(
-                padding: const EdgeInsets.only(left: 40, top: 30),
+                padding: const EdgeInsets.only(left: 40),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: optionList
@@ -83,7 +94,7 @@ class _CalculationQuestionPage1State extends State<CalculationQuestionPage1> {
 
   Widget buildOptionItem(OptionEntity item, int index) {
     return Container(
-      margin: const EdgeInsets.symmetric(vertical: 10),
+      margin: const EdgeInsets.symmetric(vertical: 20),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: const BorderRadius.all(Radius.circular(6)),
