@@ -381,4 +381,34 @@ List TESTPAPERONE = [
       },
     ],
   },
+  
+  {
+    "questionId": 14,
+    "level": 4,
+    "level1Name": "失效可能性评分",
+    "level2Name": "第三方破坏评分",
+    "level3Name": "地面装置及其保护措施",
+    "questionName": "管道施工带条件",
+    "questionScore": null,
+    "questionType": 1,
+    "isDone": 0,
+    "checkedCode": null,
+    "option": [
+      {
+        "optionName": "位于茂密树林或大块农田无标志，无法确认其位置，为任何标志",
+        "optionScore": 0,
+        "optionCode": 1,
+      },
+      {
+        "optionName": "有部分标志，但管道位置确定比较困难",
+        "optionScore": 2,
+        "optionCode": 2,
+      },
+      {
+        "optionName": "管道走向清晰可见",
+        "optionScore": 4,
+        "optionCode": 2,
+      },
+    ],
+  },
 ];
