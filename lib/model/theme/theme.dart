@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class AppThemeData {
   // 字号
-  static const double _titleFontSize = 16;
+  static const double _titleFontSize = 12;
 
   // 亮色主题
   static ThemeData lightTheme = ThemeData(
@@ -37,7 +37,7 @@ class AppThemeData {
     ),
     iconTheme: const IconThemeData(
       color: Colors.black,
-      size: 20,
+      size: 16,
     ),
   );
 }

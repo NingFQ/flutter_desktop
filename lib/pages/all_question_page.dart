@@ -104,6 +104,55 @@ class _AllQuestionPageState extends State<AllQuestionPage> {
     );
   }
 
+  /// 构建题目
+  Widget buildLevelItem(item) {
+    List children = item['children'] ?? [];
+    double size = 20.0;
+    if (item['level'] == 1) {
+      size = 22.0;
+    }
+    if (item['level'] == 2) {
+      size = 18.0;
+    }
+    if (item['level'] == 3) {
+      size = 16.0;
+    }
+
+    if (children.isEmpty) {
+      // QuestionEntity questionItem = new QuestionEntity().fromJson(item);
+      // return buildSingleQuestion(questionItem, 1);
+      return Container();
+    } else {
+      return Container(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Container(
+              padding: const EdgeInsets.only(left: 40),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    '${item['name']}',
+                    style: TextStyle(
+                      fontSize: 16,
+                    ),
+                  ),
+                  Container(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: children.map((e) => buildLevelItem(e)).toList(),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      );
+    }
+  }
+
   /// 单个题目
   Widget buildSingleQuestion(Map singleQuestion, int index) {
     return Container(
