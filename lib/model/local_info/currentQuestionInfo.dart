@@ -1,4 +1,5 @@
 import '../../data/Current_question_entity.dart';
+import '../questions/failure_probability/part_four/part_four.dart';
 import '../questions/failure_probability/part_one/part_one_type1234.dart';
 import '../questions/failure_probability/part_one/part_one_type567.dart';
 import '../questions/failure_probability/part_three/part_three.dart';
@@ -71,10 +72,8 @@ setCurrentQuestion(int pipeLineType) {
       Questioninfo.thirdPartyDamage = fPPartOneType1;
 
       /// 腐蚀
-      /// 设备操作
-      Questioninfo.equipmentOperation = fpPartThree;
+      Questioninfo.corrode = [];
 
-      ///管道本质安全质量
       break;
 
     case 2:
@@ -82,49 +81,52 @@ setCurrentQuestion(int pipeLineType) {
       /// 第三方破坏
       Questioninfo.thirdPartyDamage = fPPartOneType1;
 
-      /// 设备操作
-      Questioninfo.equipmentOperation = fpPartThree;
+      /// 腐蚀
+      Questioninfo.corrode = [];
       break;
     case 3:
 
       /// 第三方破坏
       Questioninfo.thirdPartyDamage = fPPartOneType1;
-
-      /// 设备操作
-      Questioninfo.equipmentOperation = fpPartThree;
       break;
     case 4:
 
       /// 第三方破坏
       Questioninfo.thirdPartyDamage = fPPartOneType1;
 
-      /// 设备操作
-      Questioninfo.equipmentOperation = fpPartThree;
+      /// 腐蚀
+      Questioninfo.corrode = [];
       break;
     case 5:
 
       /// 第三方破坏
       Questioninfo.thirdPartyDamage = fPPartOneType2;
 
-      /// 设备操作
-      Questioninfo.equipmentOperation = fpPartThree;
+      /// 腐蚀
+      Questioninfo.corrode = [];
       break;
     case 6:
 
       /// 第三方破坏
       Questioninfo.thirdPartyDamage = fPPartOneType2;
 
-      /// 设备操作
-      Questioninfo.equipmentOperation = fpPartThree;
+      /// 腐蚀
+      Questioninfo.corrode = [];
       break;
     case 7:
 
       /// 第三方破坏
       Questioninfo.thirdPartyDamage = fPPartOneType2;
 
-      /// 设备操作
-      Questioninfo.equipmentOperation = fpPartThree;
+      /// 腐蚀
+      Questioninfo.corrode = [];
       break;
     default:
   }
+
+  /// 设备操作
+  Questioninfo.equipmentOperation = fpPartThree;
+
+  ///管道本质安全质量
+  Questioninfo.tubeEssence = fpPartFour;
 }

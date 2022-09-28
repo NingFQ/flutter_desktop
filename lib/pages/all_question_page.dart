@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_desktop/model/local_info/currentQuestionInfo.dart';
 
+import '../data/Option_entity.dart';
+import '../data/Question_entity.dart';
+
 class AllQuestionPage extends StatefulWidget {
   const AllQuestionPage({Key? key}) : super(key: key);
 
@@ -52,23 +55,6 @@ class _AllQuestionPageState extends State<AllQuestionPage> {
     setState(() {});
   }
 
-  // void buildQuestionList() {
-  //   switch (currentIndex) {
-  //     case 1:
-  //       currentQuestionList = Questioninfo.thirdPartyDamage!;
-  //       break;
-  //     case 2:
-  //       currentQuestionList = Questioninfo.corrode!;
-  //       break;
-  //     case 3:
-  //       currentQuestionList = Questioninfo.equipmentOperation!;
-  //       break;
-  //     case 4:
-  //       currentQuestionList = Questioninfo.tubeEssence!;
-  //       break;
-  //   }
-  // }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -119,12 +105,12 @@ class _AllQuestionPageState extends State<AllQuestionPage> {
           children: [
             Container(
               width: 200,
-              decoration: BoxDecoration(
-                color: const Color(0xFFF9FAFC),
+              decoration: const BoxDecoration(
+                color: Color(0xFFF9FAFC),
                 border: Border(
                   right: BorderSide(
                     width: 1,
-                    color: Colors.black.withOpacity(0.5),
+                    color: Color(0xFFD1D1D1),
                   ),
                 ),
               ),
@@ -155,7 +141,13 @@ class _AllQuestionPageState extends State<AllQuestionPage> {
                                       : Colors.transparent,
                                 ),
                               ),
-                              Text('${e["name"]}'),
+                              Text(
+                                '${e["name"]}',
+                                style: const TextStyle(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
                             ],
                           ),
                         ),
@@ -168,12 +160,24 @@ class _AllQuestionPageState extends State<AllQuestionPage> {
               child: Container(
                 width: double.infinity,
                 height: double.infinity,
-                color: Colors.orange,
+                color: Colors.white,
                 child: SingleChildScrollView(
-                  child: Column(
-                    children: currentQuestionList[currentIndex - 1]
-                        .map<Widget>((e) => Text('${e["questionName"]}'))
-                        .toList(),
+                  child: Container(
+                    padding: const EdgeInsets.all(20),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: currentQuestionList[currentIndex - 1]
+                          .asMap()
+                          .keys
+                          .map<Widget>(
+                            (index) => buildSingleQuestion(
+                              currentQuestionList[currentIndex - 1][index],
+                              index,
+                            ),
+                          )
+                          .toList(),
+                    ),
                   ),
                 ),
               ),
@@ -185,7 +189,73 @@ class _AllQuestionPageState extends State<AllQuestionPage> {
   }
 
   /// 单个题目
-  Widget buildSingleQuestion(Map singleQuestion, int index) {
-    return Container();
+  Widget buildSingleQuestion(Map<String, dynamic> singleQuestion, int index) {
+    QuestionEntity enity = QuestionEntity().fromJson(singleQuestion);
+    return Container(
+      margin: const EdgeInsets.only(bottom: 15),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            '${index + 1}、${enity.questionName}',
+            style: const TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 14,
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(left: 30, top: 5),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: enity.option!
+                  .asMap()
+                  .keys
+                  .map(
+                      (index) => buildSingleOption(enity, enity.option![index]))
+                  .toList(),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  /// 单个选项
+  Widget buildSingleOption(QuestionEntity question, OptionEntity optionEntity) {
+    return GestureDetector(
+      onTap: () {
+        question.checkedCode = optionEntity.optionCode;
+        setState(() {});
+      },
+      child: Container(
+        alignment: Alignment.centerLeft,
+        height: 30,
+        margin: const EdgeInsets.symmetric(vertical: 5),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Text(
+              '${optionEntity.optionName}(${optionEntity.optionScore}分)',
+              style: const TextStyle(
+                fontSize: 12,
+                color: Colors.black,
+                height: 1,
+              ),
+            ),
+            const SizedBox(width: 10),
+            Visibility(
+              visible: optionEntity.optionCode == question.checkedCode,
+              child: const Icon(
+                Icons.done,
+                color: Colors.green,
+                size: 14,
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }
