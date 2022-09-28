@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
-import 'model/theme/theme.dart';
 import 'pages/index.dart';
 import 'route/index.dart';
 
@@ -16,7 +15,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      theme: AppThemeData.lightTheme,
+      theme: lightTheme,
       onGenerateRoute: AppRoutes().onGenerateRoute,
       navigatorKey: AppRoutes.navigatorKey,
       home: const HomePage(),
@@ -24,3 +23,40 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
+ThemeData lightTheme = ThemeData(
+  primarySwatch: Colors.pink,
+  primaryColor: Colors.white,
+  primaryTextTheme: const TextTheme(
+    headline6: TextStyle(
+      color: Colors.black,
+      fontSize: 12,
+      fontWeight: FontWeight.w500,
+    ),
+  ),
+  elevatedButtonTheme: ElevatedButtonThemeData(
+    style: ButtonStyle(
+      backgroundColor: MaterialStateProperty.all(Colors.blueGrey),
+    ),
+  ),
+  appBarTheme: const AppBarTheme(
+    color: Colors.white,
+    elevation: 0.5,
+    iconTheme: IconThemeData(
+      color: Colors.black,
+      size: 18,
+    ),
+    actionsIconTheme: IconThemeData(
+      color: Colors.black,
+    ),
+    titleTextStyle: TextStyle(
+      fontSize: 16,
+      color: Colors.black,
+      fontWeight: FontWeight.w600,
+    ),
+  ),
+  iconTheme: const IconThemeData(
+    color: Colors.black,
+    size: 18,
+  ),
+);

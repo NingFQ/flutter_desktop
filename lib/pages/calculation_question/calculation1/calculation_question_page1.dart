@@ -3,8 +3,7 @@ import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 
 import '../../../data/Option_entity.dart';
 import '../../../data/Question_entity.dart';
-import '../../../model/currentQuestionInfo.dart';
-import '../../../model/page_jump_method.dart';
+import '../../../model/local_info/currentQuestionInfo.dart';
 import '../../../model/pub_widget/bottom_ operation.dart';
 import 'calculation_dialog1.dart';
 import 'calculation_dialog2.dart';
@@ -33,19 +32,14 @@ class _CalculationQuestionPage1State extends State<CalculationQuestionPage1> {
 
   @override
   void initState() {
-    questionIndex = widget.arguments['index'] ?? 0;
-    questionData =
-        QuestionEntity().fromJson(Questioninfo.currentQuestion![questionIndex]);
-    currentoptionCode = questionData.checkedCode ?? 0;
-    optionList = questionData.option!;
-    super.initState();
+
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('第 ${questionData.questionId} 题'),
+        title: Text('第 xxx 题'),
       ),
       body: Container(
         width: double.infinity,
@@ -57,7 +51,7 @@ class _CalculationQuestionPage1State extends State<CalculationQuestionPage1> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                '${questionData.questionId}、${questionData.questionName}',
+                '${questionData.questionName}',
                 style: const TextStyle(
                   fontSize: 18,
                 ),
@@ -88,7 +82,6 @@ class _CalculationQuestionPage1State extends State<CalculationQuestionPage1> {
           ),
         ),
       ),
-      bottomNavigationBar: BottomOperation(questionIndex: questionIndex),
     );
   }
 
@@ -122,18 +115,7 @@ class _CalculationQuestionPage1State extends State<CalculationQuestionPage1> {
                       child: const Text('跨越段或露管段'),
                       onPressed: () {
                         /// 选择选项后 选中样式改变 改变题目数据里的值
-                        setState(() {
-                          currentoptionCode = 0;
-                          // 标记已做
-                          Questioninfo.currentQuestion![questionIndex]
-                              ['isDone'] = 1;
-                          // 标记此题得分 跨越段或露管段直接零分
-                          Questioninfo.currentQuestion![questionIndex]
-                              ['questionScore'] = 0;
-                          // 标记此题选中的选项
-                          Questioninfo.currentQuestion![questionIndex]
-                              ['checkedCode'] = item.optionCode;
-                        });
+
                         Navigator.of(context).pop();
                       },
                     ),

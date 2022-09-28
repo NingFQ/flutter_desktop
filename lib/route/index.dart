@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_desktop/pages/all_question_page.dart';
 import 'package:flutter_desktop/pages/calculation_question/calculation1/calculation_question_page1.dart';
-import 'package:flutter_desktop/pages/single_question_page.dart';
+import 'package:flutter_desktop/pages/choose_module/choose_question_part.dart';
 
 import '../main.dart';
 
@@ -11,12 +11,11 @@ class AppRoutes {
     /// 首页
     '/': (context, {arguments}) => const MyApp(),
 
+    /// 选择失效后果和失效可能性得分
+    'chooseQuestionPart': (context, {arguments}) => const ChooseQuestionPart(),
+
     /// 全部问题页
     'allQuestionPage': (context, {arguments}) => const AllQuestionPage(),
-
-    /// 单个问题页
-    'singleQuestionPage': (context, {arguments}) =>
-        SingleQuestionPage(arguments: arguments),
 
     /// 计算问题 埋深
     'calculationQuestionPage1': (context, {arguments}) =>

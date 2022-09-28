@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../model/currentQuestionInfo.dart';
+import '../model/local_info/currentQuestionInfo.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -11,37 +11,6 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
 
-
-  List<Map> pipelineType = [
-    {
-      "pipelineName": "输气管道",
-      "pipelineType": PipeLineType.pipeLineTypeOne,
-    },
-    {
-      "pipelineName": "输油管道",
-      "pipelineType": PipeLineType.pipeLineTypeTwo,
-    },
-    {
-      "pipelineName": "集气管道",
-      "pipelineType": PipeLineType.pipeLineTypeThree,
-    },
-    {
-      "pipelineName": "集油管道",
-      "pipelineType": PipeLineType.pipeLineTypeFour,
-    },
-    {
-      "pipelineName": "输送天然气、液化气介质的城市燃气管道",
-      "pipelineType": PipeLineType.pipeLineTypeFive,
-    },
-    {
-      "pipelineName": "输送人工煤气介质的城市燃气管道",
-      "pipelineType": PipeLineType.pipeLineTypeSix,
-    },
-    {
-      "pipelineName": "输送腐蚀性液体介质的工业管道",
-      "pipelineType": PipeLineType.pipeLineTypeSeven,
-    },
-  ];
 
   @override
   Widget build(BuildContext context) {
@@ -73,13 +42,15 @@ class _HomePageState extends State<HomePage> {
                       margin: const EdgeInsets.only(top: 20),
                       child: ElevatedButton(
                         onPressed: () {
-                          // Questioninfo.currentQuestion = setCurrentQuestion(1)!;
-                          // Navigator.pushNamed(context, 'allQuestionPage');
+                          setCurrentQuestion(e["pipelineType"]);
+                          // Questioninfo.currentQuestionCode = e['pipelineType'];
+                          // Navigator.pushNamed(context, 'chooseQuestionPart');
+                          Navigator.pushNamed(context, 'allQuestionPage');
                         },
                         child: Text(
                           '${e['pipelineName']}',
                           style: const TextStyle(
-                            fontSize: 16,
+                            fontSize: 14,
                           ),
                         ),
                       ),

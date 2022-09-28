@@ -8,6 +8,6 @@ class OptionEntity with JsonConvert<OptionEntity> {
   /// 选项分值
   double? optionScore;
 
-  /// 是否被选择
+  /// 选项标识
   int? optionCode;
 }
