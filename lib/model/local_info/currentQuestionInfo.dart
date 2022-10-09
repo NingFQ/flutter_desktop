@@ -3,6 +3,9 @@ import '../questions/failure_probability/part_four/part_four.dart';
 import '../questions/failure_probability/part_one/part_one_type1234.dart';
 import '../questions/failure_probability/part_one/part_one_type567.dart';
 import '../questions/failure_probability/part_three/part_three.dart';
+import '../questions/failure_probability/part_two/part_two_air/part_two_air.dart';
+import '../questions/failure_probability/part_two/part_two_soil/part_two_soil1.dart';
+import '../questions/failure_probability/part_two/part_two_within/part_two_within1.dart';
 
 CurrentQuestionEntity Questioninfo = CurrentQuestionEntity();
 
@@ -73,6 +76,9 @@ setCurrentQuestion(int pipeLineType) {
 
       /// 腐蚀
       Questioninfo.corrode = [];
+      Questioninfo.corrode?.addAll(fPPartTwoAir); // 大气腐蚀
+      Questioninfo.corrode?.addAll(fPPartTwoSoilType1); // 土壤腐蚀
+      Questioninfo.corrode?.addAll(fPPartTwoWithinType1); // 内腐蚀
 
       break;
 
